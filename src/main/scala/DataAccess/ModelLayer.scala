@@ -59,7 +59,7 @@ object ModelLayer {
   }
 
   def getUserFromToken(token: String): Future[Seq[User]] = {
-    val q = tokenQuery.filter(_.token === token).flatMap(currTocken => userQuery.filter(_.id === currTocken.userId)).take(1)
+    val q = tokenQuery.filter(_.token === token).flatMap(currToken => userQuery.filter(_.id === currToken.userId)).take(1)
     databaseService.db.run(q.result)
   }
 }

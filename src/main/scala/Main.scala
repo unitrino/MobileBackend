@@ -1,13 +1,14 @@
 import DataAccess.{DatabaseService, ModelLayer}
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.http.scaladsl.Http
-import akka.stream.ActorMaterializer
+import akka.stream.{ActorMaterializer, Materializer}
 import akka.Done
 import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.server.Directives._
-import akka.http.scaladsl.model.{HttpHeader, StatusCodes}
+import akka.http.scaladsl.model.{HttpHeader, HttpRequest, Multipart, StatusCodes}
+import akka.http.scaladsl.model.FormData
 import akka.pattern.ask
-import akka.util.Timeout
+import akka.util.{ByteString, Timeout}
 import models.{TokenEntity, User}
 import slick.jdbc.meta.MTable
 
@@ -17,6 +18,7 @@ import scala.concurrent.duration._
 import scala.util.Try
 import DataAccess.ModelLayer
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
+import akka.http.scaladsl.unmarshalling.{FromRequestUnmarshaller, Unmarshal, Unmarshaller}
 import org.joda.time.DateTime
 import org.joda.time.format.{DateTimeFormatter, ISODateTimeFormat}
 import spray.json._
@@ -38,11 +40,12 @@ trait JsonSupport extends SprayJsonSupport with DefaultJsonProtocol {
   }
 
   implicit val userFormat = jsonFormat8(User)
+
 }
 
-
-
 case class ourFunc(elem: String => String)
+case class testF(e1:Int, e2:Int)
+
 
 class MyActor extends Actor {
   
@@ -53,7 +56,6 @@ class MyActor extends Actor {
       sender ! "Another"
     }
   }
-
 }
 
 object Main extends App with JsonSupport {
@@ -61,6 +63,14 @@ object Main extends App with JsonSupport {
     implicit val system = ActorSystem()
     implicit val materializer = ActorMaterializer()
     implicit val executionContext = system.dispatcher
+
+    implicit val orderUM: FromRequestUnmarshaller[testF] = new Unmarshaller[HttpRequest, testF] {
+      override def apply(value: HttpRequest)(implicit ec: ExecutionContext, materializer: Materializer): Future[testF] = {
+        val d = Unmarshal(value.entity).to[FormData]
+        println(d.value.get.get.fields.get("e1"))
+        Future(testF(d.value.get.get.fields.get("e1").get.toInt + 1, d.value.get.get.fields.get("e1").get.toInt + 2))
+      }
+    }
 
     val route: Route =
       post {
@@ -74,6 +84,16 @@ object Main extends App with JsonSupport {
         path("get_info") { req =>
           val token: String = req.request.getHeader("HTTP_TOCKEN").get().value()
           req.complete(ModelLayer.getUserFromToken(token).flatMap{ answ => Future(answ.toJson) })
+        }
+      } ~
+      post {
+        path("test_path") {
+          {
+            entity(as[testF]) { userInfo =>
+              println(userInfo)
+              complete("qwe")
+            }
+          }
         }
       } ~
       get {

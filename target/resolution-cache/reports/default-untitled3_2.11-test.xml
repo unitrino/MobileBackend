@@ -7,7 +7,7 @@
 		revision="1.0"
 		conf="test"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20161117160651"/>
+		date="20161124152924"/>
 	<dependencies>
 		<module organisation="com.zaxxer" name="HikariCP">
 			<revision name="2.5.1" status="release" pubdate="20160919144722" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/brettwooldridge/HikariCP" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="49">

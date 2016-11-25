@@ -7,7 +7,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies for default#untitled3_2.11;1.0 [compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies default#untitled3_2.11;1.0->org.scala-lang#scala-library;2.11.8 [compile->default(compile)][0m
 [0m[[0minfo[0m] [0mResolving org.scala-lang#scala-library;2.11.8 ...[0m
-[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@2e06d080[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@72985b2c[0m
 [0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-library;2.11.8[0m
 [0m[[0mdebug[0m] [0m	found org.scala-lang#scala-library;2.11.8 in sbt-chain[0m
 [0m[[0mdebug[0m] [0m	[2.11.8] org.scala-lang#scala-library;2.11.8[0m
@@ -2962,7 +2962,7 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] io.spray#spray-json_2.11;1.3.2!spray-json_2.11.jar(bundle)[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.slf4j#slf4j-api;1.7.21!slf4j-api.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] jline#jline;2.12.1!jline.jar[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 1035ms :: artifacts dl 34ms[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 4580ms :: artifacts dl 72ms[0m
 [0m[[0mdebug[0m] [0m	report for default#untitled3_2.11;1.0 compile produced in /home/incode51/IdeaProjects/untitled3/target/resolution-cache/reports/default-untitled3_2.11-compile.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#untitled3_2.11;1.0 runtime produced in /home/incode51/IdeaProjects/untitled3/target/resolution-cache/reports/default-untitled3_2.11-runtime.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#untitled3_2.11;1.0 test produced in /home/incode51/IdeaProjects/untitled3/target/resolution-cache/reports/default-untitled3_2.11-test.xml[0m
@@ -2976,5 +2976,5 @@
 [0m[[0mdebug[0m] [0m	report for default#untitled3_2.11;1.0 docs produced in /home/incode51/IdeaProjects/untitled3/target/resolution-cache/reports/default-untitled3_2.11-docs.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#untitled3_2.11;1.0 pom produced in /home/incode51/IdeaProjects/untitled3/target/resolution-cache/reports/default-untitled3_2.11-pom.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#untitled3_2.11;1.0 scala-tool produced in /home/incode51/IdeaProjects/untitled3/target/resolution-cache/reports/default-untitled3_2.11-scala-tool.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (1035ms resolve - 34ms download)[0m
+[0m[[0mdebug[0m] [0m	resolve done (4580ms resolve - 72ms download)[0m
 [0m[[0minfo[0m] [0mDone updating.[0m
